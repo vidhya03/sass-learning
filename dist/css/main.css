@@ -1,8 +1,4 @@
-:root {
-  --primary-color: #272727;
-}
-
 body {
-  background: var(--primary-color);
+  background: #272727;
 }
 /*# sourceMappingURL=main.css.map */
