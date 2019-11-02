@@ -1,25 +1,60 @@
 @import './resets';
 @import './variables';
 
-@function weight ($weight-name) {
-    @return map-get($map: $font-weights, $key: $weight-name);
+@function weight($weight-name) {
+  @return map-get($map: $font-weights, $key: $weight-name);
 }
+
+@mixin flexCenter($direction) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $direction;
+}
+@mixin theme($light-theme: true) {
+  @if $light-theme {
+
+    background: lighten($primary-color, 100%);
+    color: darken($text-color, 100%);
+  }
+}
+
+@mixin mobile {
+    @media (max-width: $mobile) {
+        @content;        
+    }    
+}
+
 body {
   background: $primary-color;
   color: $text-color;
 }
 
 .main {
-  width: 80%;
+  @include flexCenter(row);
+  width: calc(80%-40%);
   margin: 0 auto;
-  #{&}_paragraph {
+  #{&}_paragraph1 {
     font-weight: weight(bold);
     &:hover {
       color: pink;
     }
   }
+  #{&}_paragraph2 {
+      @extend .main_paragraph1;
+      &:hover{
+          color : $accent-color;
+      }
+  }
   &:hover {
     color: orange;
     cursor: pointer;
   }
+  @include mobile(){
+      flex-direction: column;
+  }
+}
+
+.light {
+  @include theme($light-theme: true);
 }
