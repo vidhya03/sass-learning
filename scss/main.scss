@@ -1,5 +1,25 @@
 $primary-color: #272727;
+$text-color: #ffff;
+
+$font-weights : (
+    "regular": 400,
+    "medium": 500,
+    "bold": 700
+);
 
 body {
   background: $primary-color;
+  color: $text-color;  
 }
+
+.main {
+    width: 80%;
+    margin: 0 auto;
+   #{&}_paragraph {
+        font-weight: map-get($font-weights,bold);
+        &:hover {
+            color: pink;
+        }
+    }
+}
+
